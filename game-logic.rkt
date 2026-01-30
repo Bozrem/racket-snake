@@ -66,11 +66,11 @@
          (self_collision? next-head curr-snake)) ;; Or hit ourself
       initial-game] ;; Restart (lose, but I didn't want to figure out how quitting works)
 
-    [(not (food_collision? next-head food)) ;; If we didn't hit food
-      (game (remove_last next-snake) food dir)] ;; Remove the tail
-
-    [else ;; Otherwise (we did hit the food)
+    [(food_collision? next-head food) ;; Did hit food
       (game next-snake (position (random WIDTH) (random HEIGHT)) dir)] ;; Move the food
+
+    [else ;; Otherwise (did not hit food)
+      (game (remove_last next-snake) food dir)] ;; Remove the tail
     )
   )
 
