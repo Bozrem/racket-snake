@@ -12,14 +12,17 @@ The game state is pretty simple. It consists of:
 ### Game logic
 There are three separate conditions we can hit in a state transition:
 1. Death Collision
+
 This runs a check that the newly generated head is not out of bounds (wall collision), and that it matches no other position in the body list.
 If it gets triggered, it simply "updates" the game state to be the initial one, thus ending restarting the game.
 
 2. Food collision
+
 Condition just checks if the new head position matches the food position.
 If it does, then the game state returned is the snake with the new head and a new random food location
 
 3. Neither
+
 If we didn't die or grow, just remove the last item in the list (which is technically index 0 for Racket), thus removing the tail
 
 ### Rendering
